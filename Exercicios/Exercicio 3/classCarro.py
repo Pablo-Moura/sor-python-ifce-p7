@@ -8,16 +8,15 @@ Classe carro: Implemente uma classe chamada Carro com as seguintes propriedades:
 - Forneça um método obterGasolina( ), que retorna o nível atual de combustível.
 - Forneça um método adicionarGasolina( ), para abastecer o tanque.
 """
+from classCarroInput import *
 
 class Carro():
     def __init__(self, consumo):
         self.consumo = consumo
-        self.litrosAbastecidos = float(input('Quantos litros você deseja abastecer? '))
         self.gInicial = 0
 
     def andar(self):
-        global distanciaPercorrida, gasolinaAtual
-        distanciaPercorrida = int(input('Quantos km você deseja andar? '))
+        global gasolinaAtual
         gasolinaTemporaria = gasolinaAtual - (distanciaPercorrida / self.consumo)
         if gasolinaTemporaria < 0:
             print('Não é possivel percorrer a distancia fornecida, tente novamente.')
@@ -27,14 +26,11 @@ class Carro():
 
     def adicionarGasolina(self):
         global gasolinaAtual
-        gasolinaAtual = self.gInicial + self.litrosAbastecidos
-        return print(f'Você adicionou {self.litrosAbastecidos} litros de gasolina ao tanque.')
+        gasolinaAtual = self.gInicial + litrosAbastecidos
+        return print(f'Você adicionou {litrosAbastecidos}L de gasolina ao tanque.')
 
     def obterGasolina(self):
-        if gasolinaAtual == 1:
-            print(f'Você possui: {gasolinaAtual} litro de gasolina no tanque.')
-        else:
-            print(f'Você possui: {gasolinaAtual} litros de gasolina no tanque.')
+        print('Você possui: {:.2f}L de gasolina no tanque.'.format(gasolinaAtual))
 
 Chevette = Carro(20)
 Chevette.adicionarGasolina()
