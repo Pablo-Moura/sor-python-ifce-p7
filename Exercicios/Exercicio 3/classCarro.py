@@ -17,8 +17,10 @@ class Carro():
 
     def andar(self):
         global gasolinaAtual
+
         distanciaPercorrida = float(ed.get())
         gasolinaTemporaria = gasolinaAtual - (distanciaPercorrida / self.consumo)
+
         if gasolinaTemporaria < 0:
             print('Não é possivel percorrer a distancia fornecida, tente novamente.')
         else:
@@ -27,8 +29,10 @@ class Carro():
 
     def adicionarGasolina(self):
         global gasolinaAtual
+
         litrosAbastecidos = float(ed.get())
         gasolinaAtual = self.gInicial + litrosAbastecidos
+
         return print(f'Você adicionou {litrosAbastecidos}L de gasolina ao tanque.')
 
     def obterGasolina(self):
@@ -53,12 +57,12 @@ def buttonClick1():
 
 def buttonClick2():
     global lbTemporaria
-    Chevette.andar()
 
     lb1['text'] = f'Você andou {ed.get()}km, consumindo 1L a cada {Chevette.consumo}km'
     lb3['text'] = 'Você deseja ver a quantidade de gasolina no tanque?'
     lbTemporaria = lbTemporaria + f'\n2 - ' + lb1['text']
 
+    Chevette.andar()
     ed.destroy()
     btConfirm2.destroy()
     passoAPasso()
@@ -69,11 +73,11 @@ def buttonClick2():
 
 def buttonClick3():
     global lbTemporaria, gasolinaAtual
-    Chevette.obterGasolina()
 
     lb1['text'] = 'Gasolina Atual: {:.1f}L no tanque'.format(gasolinaAtual)
     lbTemporaria = lbTemporaria + f'\n3 - ' + lb1['text']
 
+    Chevette.obterGasolina()
     lb3.destroy()
     btConfirm3.destroy()
     passoAPasso()
